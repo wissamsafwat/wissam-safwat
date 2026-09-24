@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Data Analytics Portfolio | High-Impact Business Decisions</title>
+  <title>Wissam Safwat Fayez Ghaly | Data Analytics Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #090d16;
@@ -37,7 +37,6 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
     body {
@@ -46,6 +45,12 @@
       transition: var(--transition);
       line-height: 1.6;
       overflow-x: hidden;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .arabic-text {
+      font-family: 'Cairo', sans-serif;
+      direction: rtl;
     }
 
     .container {
@@ -78,13 +83,20 @@
       letter-spacing: -0.5px;
       color: var(--text);
     }
-    .brand span {
-      color: var(--accent);
-    }
     .nav-actions {
       display: flex;
       align-items: center;
       gap: 1.25rem;
+    }
+    .social-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+    .social-links a:hover {
+      color: var(--accent);
     }
     .theme-toggle {
       background: none;
@@ -106,7 +118,31 @@
     /* Hero Section */
     .hero {
       padding: 6rem 0 4rem;
-      text-align: center;
+    }
+    .hero-content {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .hero-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    .hero-image {
+      flex-shrink: 0;
+      width: 280px;
+      height: 380px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
     }
     .pill {
       display: inline-flex;
@@ -121,27 +157,36 @@
       border: 1px solid var(--card-border);
     }
     .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 800;
       line-height: 1.15;
       letter-spacing: -1px;
+      margin-bottom: 0.5rem;
+    }
+    .hero h2 {
+      font-size: 1.25rem;
+      color: var(--text-muted);
       margin-bottom: 1.5rem;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+      font-weight: 500;
     }
     .hero h1 span {
-  background: linear-gradient(135deg, var(--accent), #38ef7d);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-    .hero p {
-      font-size: 1.125rem;
-      color: var(--text-muted);
-      max-width: 680px;
-      margin: 0 auto 2.5rem;
+      background: linear-gradient(135deg, var(--accent), #38ef7d);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
+    .hero-usp {
+      margin-bottom: 2rem;
+      padding-left: 1rem;
+      border-left: 3px solid var(--accent);
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      max-width: 600px;
+    }
+    
     .btn {
       display: inline-flex;
       align-items: center;
@@ -168,10 +213,15 @@
       background: transparent;
       color: var(--text);
       border: 1px solid var(--card-border);
-      margin-left: 0.75rem;
     }
     .btn-outline:hover {
       border-color: var(--text-muted);
+    }
+    
+    .action-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
     /* Section Global */
@@ -187,7 +237,21 @@
     .section-subtitle {
       color: var(--text-muted);
       margin-bottom: 2.5rem;
-      max-width: 550px;
+      max-width: 650px;
+    }
+
+    /* About Section */
+    .about-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .about-card p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
     }
 
     /* Featured Project Hero Card */
@@ -223,8 +287,34 @@
     .project-description {
       color: var(--text-muted);
       font-size: 1rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       max-width: 850px;
+    }
+
+    /* Hidden Details Container */
+    #projectDetailsContent {
+      display: none; 
+      opacity: 0; 
+      transition: opacity 0.3s ease;
+    }
+
+    /* Dashboard Image Container */
+    .dashboard-preview {
+      margin: 2rem 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      background: rgba(0,0,0,0.2);
+    }
+    .dashboard-preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .dashboard-preview:hover img {
+      transform: scale(1.02);
     }
 
     /* KPI Cards */
@@ -233,6 +323,7 @@
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.25rem;
       margin-bottom: 2.5rem;
+      margin-top: 2rem;
     }
     .kpi-card {
       background: rgba(0, 0, 0, 0.2);
@@ -293,6 +384,24 @@
       line-height: 1.5;
     }
 
+    /* Analytical Takeaway Box */
+    .analytical-takeaway {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: var(--badge-bg);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+    }
+    .analytical-takeaway h4 {
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+    .analytical-takeaway p {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
     .tag-container {
       display: flex;
       flex-wrap: wrap;
@@ -329,38 +438,22 @@
       color: var(--text-muted);
     }
 
-    /* Contact Form */
+    /* Contact Section */
     .contact-wrapper {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 12px;
-      padding: 2.5rem;
-      max-width: 600px;
+      padding: 3rem;
+      text-align: center;
+      max-width: 700px;
       margin: 0 auto;
     }
-    .form-group {
-      margin-bottom: 1.25rem;
+    .contact-wrapper h2 {
+      margin-bottom: 1rem;
     }
-    label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border-radius: 6px;
-      background: rgba(0, 0, 0, 0.1);
-      border: 1px solid var(--card-border);
-      color: var(--text);
-      outline: none;
-    }
-    [data-theme="light"] input, [data-theme="light"] textarea {
-      background: #f1f5f9;
-    }
-    input:focus, textarea:focus {
-      border-color: var(--accent);
+    .contact-wrapper p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
     }
 
     footer {
@@ -370,41 +463,6 @@
       font-size: 0.85rem;
       color: var(--text-muted);
     }
-
-    /* Modal */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(4px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 200;
-      padding: 1rem;
-    }
-    .modal-overlay.active {
-      display: flex;
-    }
-    .modal {
-      background: var(--bg);
-      border: 1px solid var(--card-border);
-      padding: 2.2rem;
-      border-radius: 12px;
-      max-width: 580px;
-      width: 100%;
-      position: relative;
-    }
-    .modal-close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      font-size: 1.2rem;
-    }
   </style>
 </head>
 <body>
@@ -412,32 +470,57 @@
   <!-- Navigation -->
   <nav>
     <div class="container nav-content">
-      <div class="brand">DATA<span>INSIGHT</span></div>
+      <div class="brand">Wissam <span>Safwat</span></div>
       <div class="nav-actions">
+        <div class="social-links">
+          <a href="https://github.com/wissamsafwat" target="_blank" rel="noopener noreferrer">GitHub</a> &nbsp;|&nbsp; 
+          <a href="https://www.linkedin.com/in/wissam-safwat" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">◐</button>
-        <a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Get in Touch</a>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <header class="hero">
-    <div class="container">
-      <div class="pill">Data Analytics & Business Intelligence</div>
-      <h1>Turning messy business data into <span>high-impact growth decisions.</span></h1>
-      <p>Transforming complex, unstructured sales records and transactional data into executive dashboards, profit driver models, and actionable growth insights.</p>
-      <div>
-        <a href="#projects" class="btn btn-primary">Explore Featured Case Study</a>
-        <a href="#contact" class="btn btn-outline">Start a Project</a>
+    <div class="container hero-content">
+      <div class="hero-text">
+        <div class="pill">Data Analytics & Business Intelligence</div>
+        <h1>Turning raw data into <span>high-impact decisions.</span></h1>
+        <h2>Wissam Safwat Fayez Ghaly (وسام صفوت فايز غالى)</h2>
+        
+        <div class="hero-usp">
+          <p><strong>For retail and e-commerce businesses:</strong> I transform raw transactional records into interactive Excel & Power BI dashboards, enabling data-driven decisions that optimize profit margins and isolate regional growth opportunities.</p>
+          <p class="arabic-text"><strong>للشركات ومتاجر التجزئة:</strong> أحول البيانات الأولية إلى لوحات تحكم تفاعلية عبر Excel و Power BI، لدعم قرارات نمو عالية التأثير ترفع هوامش الربح وتحدد فرص التوسع الإقليمي.</p>
+        </div>
+
+        <div class="action-group">
+          <a href="#projects" class="btn btn-primary">Explore Case Study</a>
+          <a href="mailto:wissamsafwat@gmail.com" class="btn btn-outline">Email Me</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="photos/profile_pic.jpg" alt="Wissam Safwat Fayez Ghaly" />
       </div>
     </div>
   </header>
 
-  <!-- Projects Section -->
-  <section id="projects">
+  <!-- About Section -->
+  <section id="about" style="padding-top: 0;">
     <div class="container">
-      <h2 class="section-title">Featured Case Study</h2>
-      <p class="section-subtitle">Real analytics pipeline analyzing 4 years of retail transactions to isolate profit bottlenecks and revenue drivers.</p>
+      <h2 class="section-title">About Me</h2>
+      <div class="about-card">
+        <p>I am a Computer Science and Artificial Intelligence student at Capital University with a focused background in software engineering, competitive programming, and business intelligence.</p>
+        <p>My analytical approach bridges technical execution and business strategy. I specialize in extracting insights from unstructured datasets using Python (Pandas, Matplotlib) and SQL, and translating those findings into accessible, executive-ready models using Excel, Power Query, and Power BI. Whether I am writing optimized C++ code or structuring a multidimensional pivot table, my goal is to deliver clean, accurate, and actionable results.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" style="padding-top: 0;">
+    <div class="container">
+      <h2 class="section-title">Featured Portfolio Project</h2>
+      <p class="section-subtitle">A practical data pipeline analyzing 4 years of retail transactions to isolate profit bottlenecks and revenue drivers.</p>
       
       <!-- Real Project from Excel -->
       <div class="featured-project">
@@ -445,60 +528,15 @@
         <div class="project-header">
           <h3>Superstore Sales & Profit Executive Dashboard</h3>
           <p class="project-description">
-            Conducted a full-funnel business intelligence audit across multi-year transactional records (2016–2019). Structured multidimensional pivot tables and an interactive dashboard with dynamic slicers to evaluate regional performance, category profit margins, customer segment contributions, and 48-month revenue trends.
+            <strong>Project Context:</strong> A comprehensive analytical training project documented in <em>mini project wissam.xlsx</em>. 
+          </p>
+          <p class="project-description">
+            <strong>My Responsibilities:</strong> I executed a full-funnel business intelligence audit across multi-year transactional records (2016–2019). I structured multidimensional pivot tables and built an interactive dashboard equipped with dynamic slicers to evaluate regional performance, category profit margins, customer segment contributions, and 48-month revenue trends.
           </p>
         </div>
-
-        <!-- Verified Key Metrics from File -->
-        <div class="kpi-grid">
-          <div class="kpi-card">
-            <div class="kpi-label">Total Revenue Generated</div>
-            <div class="kpi-value">$2.30M</div>
-            <div class="kpi-subtext">Across 4-year period (2016–2019)</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Cumulative Profit</div>
-            <div class="kpi-value">$286.4K</div>
-            <div class="kpi-subtext">Technology driving ~51% of margin</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Top Sales Region</div>
-            <div class="kpi-value">$764.6K</div>
-            <div class="kpi-subtext">West Region leads national sales</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Primary Customer Segment</div>
-            <div class="kpi-value">$1.16M</div>
-            <div class="kpi-subtext">Consumer accounts for 50.5% share</div>
-          </div>
-        </div>
-
-        <!-- Project Pillars / Insights Breakdown -->
-        <div class="breakdown-grid">
-          <div class="breakdown-card">
-            <h4>📍 Regional Sales Distribution</h4>
-            <p>
-              Modeled geographic revenue streams across all four territories: <strong>West ($764.6K)</strong> and <strong>East ($611.7K)</strong> accounted for ~60% of total volume, while <strong>Central ($518.8K)</strong> and <strong>South ($402.0K)</strong> highlighted untapped expansion opportunities.
-            </p>
-          </div>
-
-          <div class="breakdown-card">
-            <h4>💡 Category Margin Disparity</h4>
-            <p>
-              Uncovered critical margin health differences: <strong>Technology ($145.5K)</strong> and <strong>Office Supplies ($122.5K)</strong> produced the bulk of returns, while <strong>Furniture</strong> yielded only <strong>$18.5K</strong> profit despite substantial gross sales.
-            </p>
-          </div>
-
-          <div class="breakdown-card">
-            <h4>📈 Monthly Trend & Seasonality</h4>
-            <p>
-              Tracked 48-month time series data showing consistent Q4 revenue acceleration across all years, peaking in November 2019 at <strong>$118.4K</strong> in single-month sales.
-            </p>
-          </div>
-        </div>
-
-        <!-- Tags -->
-        <div class="tag-container">
+        
+        <!-- Tags (Always Visible) -->
+        <div class="tag-container" style="margin-bottom: 2rem;">
           <span class="tag">Excel Pivot Tables</span>
           <span class="tag">Interactive Dashboard</span>
           <span class="tag">Regional Analysis</span>
@@ -507,17 +545,85 @@
           <span class="tag">Profit Optimization</span>
         </div>
 
-        <div style="margin-top: 2rem;">
-          <button class="btn btn-primary" onclick="openModal('Superstore Sales & Profit Audit', 'This analysis consolidated 4 years of retail records into an interactive dashboard equipped with slicers and pivot aggregates. Findings showed that while Furniture generated heavy order volume, high logistical and discounting costs resulted in only a 6.4% share of total profit. Reallocating sales focus toward Technology and high-value Consumer cohorts represents the single largest margin lever for the business.')">
-            Read Full Analytical Takeaway &rarr;
+        <!-- Buttons to Toggle Details -->
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button class="btn btn-primary" id="toggleDetailsBtn" onclick="toggleProjectDetails()">
+            Explore Full Project Details &darr;
           </button>
+          <a href="https://github.com/wissamsafwat" target="_blank" class="btn btn-outline">View Workbook on GitHub</a>
         </div>
+
+        <!-- Hidden Details Container (Expands on Click) -->
+        <div id="projectDetailsContent">
+          
+          <!-- Dashboard Screenshot Preview -->
+          <div class="dashboard-preview">
+            <img src="photos/superstone_dashboard_excel.png" alt="Superstore Sales and Profit Dashboard Preview" />
+          </div>
+
+          <!-- Verified Key Metrics from File -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-label">Total Revenue Generated</div>
+              <div class="kpi-value">$2.30M</div>
+              <div class="kpi-subtext">Across 4-year period (2016–2019)</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Cumulative Profit</div>
+              <div class="kpi-value">$286.4K</div>
+              <div class="kpi-subtext">Technology driving ~51% of margin</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Top Sales Region</div>
+              <div class="kpi-value">$764.6K</div>
+              <div class="kpi-subtext">West Region leads national sales</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Primary Customer Segment</div>
+              <div class="kpi-value">$1.16M</div>
+              <div class="kpi-subtext">Consumer accounts for 50.5% share</div>
+            </div>
+          </div>
+
+          <!-- Project Pillars / Insights Breakdown -->
+          <div class="breakdown-grid">
+            <div class="breakdown-card">
+              <h4>📍 Regional Sales Distribution</h4>
+              <p>
+                Modeled geographic revenue streams across all four territories: <strong>West ($764.6K)</strong> and <strong>East ($611.7K)</strong> accounted for ~60% of total volume, while <strong>Central ($518.8K)</strong> and <strong>South ($402.0K)</strong> highlighted untapped expansion opportunities. Data verified via geographic Pivot aggregation.
+              </p>
+            </div>
+
+            <div class="breakdown-card">
+              <h4>💡 Category Margin Disparity</h4>
+              <p>
+                Uncovered critical margin health differences. <strong>Technology ($145.5K)</strong> and <strong>Office Supplies ($122.5K)</strong> produced the bulk of returns. Conversely, <strong>Furniture</strong> yielded only <strong>$18.5K</strong> in cumulative profit despite substantial gross sales volume, heavily impacting overall margins.
+              </p>
+            </div>
+
+            <div class="breakdown-card">
+              <h4>📈 Monthly Trend & Seasonality</h4>
+              <p>
+                Tracked 48-month time series data showing consistent Q4 revenue acceleration across all years, peaking in late Q4 of 2019 at over <strong>$118K</strong> in single-month sales. This seasonal insight allows for proactive inventory and marketing resource allocation.
+              </p>
+            </div>
+          </div>
+
+          <!-- Analytical Takeaway Box -->
+          <div class="analytical-takeaway">
+            <h4>Analytical Takeaway: Profit Bottlenecks</h4>
+            <p>Based on the calculated totals in the pivot architecture, Furniture generated heavy order volume but resulted in a fractional 6.4% share of the $286.4K total profit. Hypothesis: High logistical overhead and aggressive discounting mechanisms are eroding margins in this category. Reallocating sales focus toward Technology and high-value Consumer cohorts represents the single largest margin lever validated by this dataset.</p>
+          </div>
+          
+        </div>
+        <!-- End of Hidden Details -->
+
       </div>
     </div>
   </section>
 
   <!-- Technical Stack -->
-  <section>
+  <section style="padding-top: 0;">
     <div class="container">
       <h2 class="section-title">Core Analytical Toolkit</h2>
       <p class="section-subtitle">Methodologies and tools applied in cleaning, synthesizing, and visualizing business data.</p>
@@ -528,7 +634,7 @@
         </div>
         <div class="skill-card">
           <h4>Business Intelligence</h4>
-          <p>KPI Card Architecture, Trend Line Modeling, Cohort Grouping</p>
+          <p>Power BI, KPI Card Architecture, Trend Line Modeling, Cohort Grouping</p>
         </div>
         <div class="skill-card">
           <h4>Financial & Margin Analysis</h4>
@@ -536,51 +642,36 @@
         </div>
         <div class="skill-card">
           <h4>Python & Database Stack</h4>
-          <p>Pandas, Data Aggregation, SQL Relational Querying</p>
+          <p>Pandas, Matplotlib, Data Aggregation, SQL Relational Querying</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Form -->
-  <section id="contact">
+  <!-- Contact Section -->
+  <section id="contact" style="padding-top: 0;">
     <div class="container">
       <div class="contact-wrapper">
-        <h2 class="section-title" style="text-align: center;">Need Clear Business Answers?</h2>
-        <p class="section-subtitle" style="text-align: center; margin-bottom: 2rem;">Let's turn your raw spreadsheets and transaction logs into automated dashboards.</p>
-        <form onsubmit="handleForm(event)">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" required placeholder="Your Name" />
-          </div>
-          <div class="form-group">
-            <label for="email">Business Email</label>
-            <input type="email" id="email" required placeholder="name@company.com" />
-          </div>
-          <div class="form-group">
-            <label for="message">Project Requirements</label>
-            <textarea id="message" rows="4" required placeholder="Tell me about your dataset or reporting goals..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Send Inquiry</button>
-        </form>
+        <h2 class="section-title">Need Clear Business Answers?</h2>
+        <p>Let's discuss how we can turn your raw spreadsheets and transaction logs into automated dashboards and concrete growth strategies.</p>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="mailto:wissamsafwat@gmail.com" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">
+            ✉️ wissamsafwat@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/wissam-safwat" target="_blank" class="btn btn-outline" style="font-size: 1.1rem; padding: 1rem 2rem;">
+            Connect on LinkedIn
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <footer>
     <div class="container">
-      <p>&copy; 2026 Data Analytics Portfolio. Turning messy business data into high-impact growth decisions.</p>
+      <p>&copy; 2026 Wissam Safwat Fayez Ghaly. Turning messy business data into high-impact decisions.</p>
     </div>
   </footer>
-
-  <!-- Modal -->
-  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModalForce()">✕</button>
-      <h3 id="modalTitle" style="margin-bottom: 1rem;"></h3>
-      <p id="modalBody" style="color: var(--text-muted); line-height: 1.6;"></p>
-    </div>
-  </div>
 
   <script>
     // Theme toggle
@@ -592,30 +683,26 @@
       toggleBtn.textContent = newTheme === 'light' ? '●' : '◐';
     });
 
-    // Modal behavior
-    const modalOverlay = document.getElementById('modalOverlay');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalBody = document.getElementById('modalBody');
+    // Expand / Collapse Project Details
+    function toggleProjectDetails() {
+      const details = document.getElementById('projectDetailsContent');
+      const btn = document.getElementById('toggleDetailsBtn');
 
-    function openModal(title, text) {
-      modalTitle.textContent = title;
-      modalBody.textContent = text;
-      modalOverlay.classList.add('active');
-    }
-
-    function closeModal(e) {
-      if (e.target === modalOverlay) {
-        modalOverlay.classList.remove('active');
+      if (details.style.display === 'none' || details.style.display === '') {
+        // Show details
+        details.style.display = 'block';
+        setTimeout(() => {
+          details.style.opacity = '1';
+        }, 10);
+        btn.innerHTML = 'Hide Project Details &uarr;';
+      } else {
+        // Hide details
+        details.style.opacity = '0';
+        setTimeout(() => {
+          details.style.display = 'none';
+        }, 300);
+        btn.innerHTML = 'Explore Full Project Details &darr;';
       }
-    }
-
-    function closeModalForce() {
-      modalOverlay.classList.remove('active');
-    }
-
-    function handleForm(e) {
-      e.preventDefault();
-      alert('Inquiry sent! Replace this handler with your live form endpoint (e.g., Formspree).');
     }
   </script>
 </body>
